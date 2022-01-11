@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Inventory Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class = "content">
+    <h1 style = "text-align: center">Inventory Manager</h1>
+   
+    {% if items|length < 1 %}
+    <h4 style = "text-align: center">There are no items.</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Supplier</th>
+            <th>Purchaser</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.supplier }}</td>
+                <td>{{ item.purchaser }}</td>
+                <td> {{item.date_created.date()}} </td>
+                <td>
+                    <a href = "/delete/{{item.id}}">Delete</a>
+                    <br>
+                    <a href = "/update/{{item.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <form>
+        
+        <a id = "btnView" href = "/add" > Add Item </a> <br>
+        <a id = "btnView" href = "/export" > Export Items as CSV </a>
+
+    </form>
+</div>
+{% endblock %}

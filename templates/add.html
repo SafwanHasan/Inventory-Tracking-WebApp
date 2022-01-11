@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Inventory Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class = "content">
+    <h1 style = "text-align: center">Add Item</h1>
+
+    <form action = "/add" method="POST">
+
+        <label>Name: </label><br>
+        <input type = "text" maxlength = 200 name = "name" id = "content" required> <br><br>
+
+        <label>Price(Optional): </label><br>
+        <input type = "number" min = 0 name = "price" id = "content"><br><br>
+
+        <label>Quantity: </label><br>
+        <input type = "number" name = "quantity" id = "content" required><br> <br>
+
+        <label>Supplier(Optional): </label><br>
+        <input type = "text" maxlength = 200 name = "supplier" id = "content"><br> <br>
+
+        <label>Purchaser(Optional): </label><br>
+        <input type = "text" maxlength = 200 name = "purchaser" id = "content"><br> <br>
+
+
+        <input type = "submit" value = "Add Item">
+
+    </form>
+</div>
+{% endblock %}
